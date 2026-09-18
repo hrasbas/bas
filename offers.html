@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -645,9 +645,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var isFB = (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1);
         var isInsta = (ua.indexOf("Instagram") > -1);
-        var isWhatsApp = (ua.indexOf("WhatsApp") > -1);
+        
+        // WhatsApp ബ്രൗസറിനെ കൃത്യമായി തിരിച്ചറിഞ്ഞ് ഒഴിവാക്കുന്നു
+        var isWhatsApp = (ua.indexOf("WhatsApp") > -1 || ua.indexOf("WhatsAppInternal") > -1);
 
-        // WhatsApp ആണെങ്കിൽ പോപ്പ്-അപ്പ് ഒഴിവാക്കാൻ false നൽകുന്നു
         if (isWhatsApp) {
             return false;
         }
