@@ -412,52 +412,6 @@
             font-size: 11px;
             opacity: 0.8;
         }
-
-        /* Facebook Modal */
-        #basFbModal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 999999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .bas-fb-content {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 16px;
-            max-width: 320px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .bas-fb-content h3 {
-            font-size: 18px;
-            color: #1b382b;
-        }
-
-        .bas-fb-content p {
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .bas-fb-close {
-            background: #1b382b;
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 700;
-            margin-top: 12px;
-            cursor: pointer;
-            width: 100%;
-        }
     </style>
 </head>
 
@@ -601,84 +555,6 @@
     </div>
 
 </div>
-
-<!-- Facebook In-App Browser Modal -->
-<div id="basFbModal">
-
-    <div class="bas-fb-content">
-
-        <h3>⚠️ Open in External Browser</h3>
-
-        <p style="font-size:13px; text-align:left; margin-top:10px;">
-            To continue properly:<br>
-            <b>1.</b> Click <b>Three Dots (...)</b> at top right.<br>
-            <b>2.</b> Select <b>"Open in External Browser"</b>.<br>
-            <b>3.</b> Then click <b>INSTALL / SAVE ICON</b>.
-        </p>
-
-        <button
-            class="bas-fb-close"
-            onclick="document.getElementById('basFbModal').style.display='none'">
-            Got It
-        </button>
-
-    </div>
-
-</div>
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const installButton =
-        document.getElementById("basInstallButton");
-
-    const fbModal =
-        document.getElementById("basFbModal");
-
-
-    function isFacebookApp() {
-        var ua =
-            navigator.userAgent ||
-            navigator.vendor ||
-            window.opera;
-
-        var isFB = (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1);
-        var isInsta = (ua.indexOf("Instagram") > -1);
-        
-        // WhatsApp ബ്രൗസറിനെ കൃത്യമായി തിരിച്ചറിഞ്ഞ് ഒഴിവാക്കുന്നു
-        var isWhatsApp = (ua.indexOf("WhatsApp") > -1 || ua.indexOf("WhatsAppInternal") > -1);
-
-        if (isWhatsApp) {
-            return false;
-        }
-
-        return isFB || isInsta;
-    }
-
-
-    if (installButton) {
-
-        installButton.addEventListener("click", function (e) {
-
-            if (isFacebookApp()) {
-
-                e.preventDefault();
-
-                if (fbModal) {
-                    fbModal.style.display = "flex";
-                }
-
-                return;
-            }
-
-        });
-
-    }
-
-});
-
-</script>
 
 </body>
 </html>
